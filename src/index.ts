@@ -41,7 +41,10 @@ const ETH_TOKEN_ADDRESS = EthAddress.ZERO;
 const ethersProvider = new JsonRpcProvider(process.env.ETHEREUM_HOST);
 const ethereumProvider: EthereumProvider = new EthersAdapter(ethersProvider);
 const walletProvider = new WalletProvider(ethereumProvider);
-walletProvider.addAccountsFromMnemonic(process.env.MNEMONIC!, 2); // add as many accounts as you want, just make sure they're funded
+
+if(process.env.MNEMONIC!.length > 0){
+  walletProvider.addAccountsFromMnemonic(process.env.MNEMONIC!, 2); // add as many accounts as you want, just make sure they're funded
+}
 
 type AccountKeys = {
   privateKey: Buffer;
