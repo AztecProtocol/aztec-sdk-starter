@@ -14,8 +14,5 @@
     "dotenv": "^16.0.1",
     "ethers": "^5.6.6",
     "ts-node": "^10.7.0"
-  },
-  "resolutions": {
-    "@aztec/bridge-clients": "0.1.63"
   }
 }
