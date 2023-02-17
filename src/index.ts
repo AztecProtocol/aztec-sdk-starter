@@ -402,10 +402,10 @@ async function defiInteraction() {
 
 async function main() {
   await setupSdk();
-  await createKeysAndInitUsers();
+  // await createKeysAndInitUsers();
   // await registerSigner();
   // await addSpendingKeysToAccount();
-  await depositAssets();
+  // await depositAssets();
   // await transferAssets();
   // await withdrawAssets();
   // await recoverAccount();
