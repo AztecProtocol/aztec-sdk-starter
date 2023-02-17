@@ -7,7 +7,7 @@ Learn more about the SDK on the Aztec documentation site [here](https://docs.azt
 
 SDK setup and examples are in `./src/index.ts`. 
 
-This starter documment is currently intended to describe working with the Aztec Connect Network in two configurations:
+This starter document is intended to describe working with the Aztec Connect Network in two configurations:
 
 - a Mainnet fork Testnet
 
