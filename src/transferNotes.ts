@@ -16,10 +16,24 @@ export async function sendAsset(
   settlementTime: TxSettlementTime,
   sdk: AztecSdk,
   signer: Signer
-): Promise<TxId> {
+) {
   const assetId = sdk.getAssetIdByAddress(tokenAddress);
-  const tokenTransferFee = (await sdk.getTransferFees(assetId))[settlementTime];
+
   const tokenAssetValue = { assetId, value: tokenQuantity };
+
+  const feeOptions = {
+    userId: sender,
+    userSpendingKeyRequired: true,
+    excludePendingNotes: true,
+    feeSignificantFigures: 2,
+    assetValue: tokenAssetValue
+  }
+
+  const tokenTransferFeeNoOptions = (await sdk.getTransferFees(assetId))[settlementTime];
+  const tokenTransferFee = (await sdk.getTransferFees(assetId, feeOptions))[settlementTime];
+
+  console.log('tokenTransferFeeNoOptions: ', tokenTransferFeeNoOptions);
+  console.log('transfer fee: ', tokenTransferFee);
 
   const tokenTransferController = sdk.createTransferController(
     sender,
@@ -28,7 +42,7 @@ export async function sendAsset(
     tokenTransferFee,
     recipient
   );
-  await tokenTransferController.createProof();
-  let txId = await tokenTransferController.send();
-  return txId;
+  // await tokenTransferController.createProof();
+  // let txId = await tokenTransferController.send();
+  // return txId;
 }
