@@ -42,7 +42,7 @@ export async function sendAsset(
     tokenTransferFee,
     recipient
   );
-  // await tokenTransferController.createProof();
-  // let txId = await tokenTransferController.send();
-  // return txId;
+  await tokenTransferController.createProof();
+  let txId = await tokenTransferController.send();
+  return txId;
 }

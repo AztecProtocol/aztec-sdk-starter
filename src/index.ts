@@ -42,7 +42,7 @@ const ethersProvider = new JsonRpcProvider(process.env.ETHEREUM_HOST);
 const ethereumProvider: EthereumProvider = new EthersAdapter(ethersProvider);
 const walletProvider = new WalletProvider(ethereumProvider);
 
-if(process.env.MNEMONIC!.length > 0){
+if (process.env.MNEMONIC!.length > 0) {
   walletProvider.addAccountsFromMnemonic(process.env.MNEMONIC!, 2); // add as many accounts as you want, just make sure they're funded
 }
 
@@ -402,8 +402,8 @@ async function defiInteraction() {
 
 async function main() {
   await setupSdk();
-  // await createKeysAndInitUsers();
-  // await registerSigner();
+  await createKeysAndInitUsers();
+  await registerSigner();
   // await addSpendingKeysToAccount();
   // await depositAssets();
   // await transferAssets();
